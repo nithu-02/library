@@ -9,9 +9,8 @@ using namespace pqxx;
 int main(int argc, char* argv[]) {
    
    string sql;
-   try {
-      char buf[100];
-      connection C("dbname = postgres user = postgres password = nithish2402 \
+    try {
+      connection C("dbname = postgres user = postgres password = admin@123 \
       hostaddr = 127.0.0.1 port = 5432");
       if (C.is_open()) {
          cout << "Opened database successfully: " << C.dbname() << endl;
@@ -19,6 +18,11 @@ int main(int argc, char* argv[]) {
          cout << "Can't open database" << endl;
          return 1;
       }
+      C.disconnect ();
+   } catch (const std::exception &e) {
+      cerr << e.what() << std::endl;
+      return 1;
+   }
       work W(C);
       
 

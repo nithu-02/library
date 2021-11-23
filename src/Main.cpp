@@ -1,7 +1,11 @@
 #include<iostream>
 #include<pqxx/pqxx>
 #include<string>
+
 #include"book.h"
+#include "user.h"
+
+
 
 using namespace std;
 using namespace pqxx;
@@ -33,6 +37,8 @@ void print_choice() {
 
 		}
 		else if(choice==2){
+			user obja;
+			obja.start_user();
 
 		}
 		else{
@@ -42,8 +48,20 @@ void print_choice() {
 
 int main(int argc, char* argv[]){
 
+       try {
       connection C("dbname = postgres user = postgres password = nithish2402 \
       hostaddr = 127.0.0.1 port = 5432");
+      if (C.is_open()) {
+         cout << "Opened database successfully: " << C.dbname() << endl;
+      } else {
+         cout << "Can't open database" << endl;
+         
+      }
+      //C.disconnect ();
+   } catch (const std::exception &e) {
+      cerr << e.what() << std::endl;
+     
+   }
       /*if (C.is_open()) {
          cout << "Opened database successfully: " << C.dbname() << endl;
       } else {

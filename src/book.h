@@ -1,12 +1,14 @@
 
 #pragma once
 #include<string>
+//#include<ctime>
+
 
 using namespace std;
 
 
 
-class book
+class book 
 {
 public:
 	
@@ -20,6 +22,7 @@ public:
 	void remove_book();
 	void modify_book();
 	void print_option();
+	void view_book();
 
 
 	
